@@ -1,0 +1,133 @@
+/* =========================
+   LIQUID GLASS OS - STABLE EDITION
+   (NO FLICKER + READABLE + MODERN)
+========================= */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  /* FIXED BASE (NO COLOR SHIFT) */
+  background:
+    radial-gradient(circle at 20% 20%, rgba(120, 180, 255, 0.12) 0%, transparent 60%),
+    radial-gradient(circle at 80% 20%, rgba(255, 120, 180, 0.10) 0%, transparent 60%),
+    radial-gradient(circle at 50% 80%, rgba(180, 255, 120, 0.08) 0%, transparent 60%),
+    linear-gradient(135deg,
+      #0f111a 0%,
+      #151a2e 50%,
+      #0f3460 100%
+    );
+
+  background-size: 200% 200%;
+  animation: liquidFlow 30s ease-in-out infinite;
+
+  overflow: hidden;
+  height: 100vh;
+  position: relative;
+
+  color: #ffffff;
+}
+
+/* =========================
+   BACKGROUND MOTION ONLY (SAFE)
+========================= */
+
+@keyframes liquidFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* =========================
+   LIGHT PARTICLE LAYER (SUBTLE ONLY)
+========================= */
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+
+  background:
+    radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+
+  opacity: 0.12;
+  pointer-events: none;
+
+  animation: none;
+}
+
+@keyframes floatParticles {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-50px);
+  }
+}
+
+/* =========================
+   DESKTOP LAYER (UI SAFE ZONE)
+========================= */
+
+.desktop {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  z-index: 5;
+}
+
+/* =========================
+   UI LAYER (READABILITY LOCKED)
+========================= */
+
+.desktop,
+.desktop-icons,
+.icon,
+.label,
+.text,
+h1, h2, h3, p, span {
+  position: relative;
+  z-index: 10;
+
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 2px 6px rgba(0,0,0,0.45);
+}
+
+/* =========================
+   ICON STYLE (CRISP + VISIBLE)
+========================= */
+
+.icon {
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.35));
+  transform: translateZ(0);
+}
+
+/* =========================
+   DESKTOP ICON LAYOUT
+========================= */
+
+.desktop-icons {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 20px;
+}
+
+/* =========================
+   SAFETY RESET (NO VISUAL BREAKING)
+========================= */
+
+* {
+  box-sizing: border-box;
+}

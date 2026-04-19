@@ -1,0 +1,125 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(120, 180, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 120, 180, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(180, 255, 120, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg,
+      #0a0a0f 0%,
+      #1a1a2e 25%,
+      #16213e 50%,
+      #0f3460 75%,
+      #1a1a2e 100%);
+  background-size: 400% 400%, 400% 400%, 400% 400%, 400% 400%;
+  animation: liquidFlow 25s ease infinite, colorShift 30s ease infinite;
+  overflow: hidden;
+  color: #ffffff;
+  height: 100vh;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="liquid" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.02)"/><circle cx="10" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23liquid)"/></svg>'),
+    linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.01) 50%, transparent 70%);
+  background-size: 20px 20px, 200% 200%;
+  animation: liquidParticles 20s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes liquidFlow {
+  0%, 100% { background-position: 0% 50%, 0% 50%, 0% 50%, 0% 50%; }
+  25% { background-position: 100% 50%, 100% 50%, 100% 50%, 25% 75%; }
+  50% { background-position: 100% 100%, 100% 100%, 100% 100%, 50% 50%; }
+  75% { background-position: 0% 100%, 0% 100%, 0% 100%, 75% 25%; }
+}
+
+@keyframes colorShift {
+  0%, 100% { filter: hue-rotate(0deg) saturate(1.2); }
+  33% { filter: hue-rotate(120deg) saturate(1.3); }
+  66% { filter: hue-rotate(240deg) saturate(1.1); }
+}
+
+@keyframes liquidParticles {
+  0% { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(-20px) rotate(360deg); }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.desktop {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(0.5px);
+}
+
+.desktop::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.02) 0%, transparent 25%, transparent 75%, rgba(255,255,255,0.02) 100%),
+    radial-gradient(circle at 30% 30%, rgba(100, 200, 255, 0.03) 0%, transparent 40%),
+    radial-gradient(circle at 70% 70%, rgba(255, 100, 200, 0.03) 0%, transparent 40%);
+  animation: liquidRipple 15s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes liquidRipple {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.05) rotate(180deg);
+    opacity: 0.6;
+  }
+}
+
+.desktop-background {
+  width: 100%;
+  height: calc(100vh - 48px);
+  position: relative;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(100, 150, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 100, 150, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(150, 255, 100, 0.05) 0%, transparent 50%);
+}
+
+.desktop-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+  opacity: 0.3;
+}
+
+.desktop-icons {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 20px;
+}
+

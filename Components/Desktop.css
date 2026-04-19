@@ -1,0 +1,239 @@
+.desktop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+}
+
+.desktop-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.desktop-widgets {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.widget {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  min-width: 200px;
+}
+
+.date-time-widget {
+  text-align: center;
+}
+
+.time {
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 8px;
+}
+
+.date {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.weather-widget {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.weather-icon {
+  font-size: 32px;
+}
+
+.weather-info {
+  flex: 1;
+}
+
+.temperature {
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.condition {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.desktop-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.desktop-icon:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.desktop-icon.folder:hover {
+  background: rgba(100, 150, 255, 0.2);
+}
+
+.desktop-icon.app:hover {
+  background: rgba(255, 100, 150, 0.2);
+}
+
+.desktop-icon.bin:hover {
+  background: rgba(255, 150, 100, 0.2);
+}
+
+.icon {
+  font-size: 48px;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.name {
+  font-size: 12px;
+  color: white !important;
+  text-align: center;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  max-width: 80px;
+  word-wrap: break-word;
+}
+
+.desktop-icon.selected {
+  background: rgba(0, 120, 255, 0.3);
+  border: 2px solid rgba(0, 120, 255, 0.8);
+}
+
+/* Responsive adjustments for desktop icons */
+@media (max-width: 768px) {
+  .desktop-grid {
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .icon {
+    font-size: 36px;
+    margin-bottom: 6px;
+  }
+
+  .name {
+    font-size: 10px;
+  }
+
+  .desktop-widgets {
+    top: 10px;
+    right: 10px;
+    gap: 10px;
+  }
+
+  .widget {
+    min-width: 150px;
+    padding: 12px;
+  }
+
+  .time {
+    font-size: 18px;
+  }
+
+  .date {
+    font-size: 12px;
+  }
+
+  .weather-icon {
+    font-size: 24px;
+  }
+
+  .temperature {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .desktop-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 25px;
+    padding: 25px;
+  }
+
+  .icon {
+    font-size: 56px;
+    margin-bottom: 10px;
+  }
+
+  .name {
+    font-size: 14px;
+  }
+
+  .desktop-widgets {
+    top: 30px;
+    right: 30px;
+    gap: 25px;
+  }
+
+  .widget {
+    min-width: 250px;
+    padding: 20px;
+  }
+
+  .time {
+    font-size: 28px;
+  }
+
+  .date {
+    font-size: 16px;
+  }
+
+  .weather-icon {
+    font-size: 36px;
+  }
+
+  .temperature {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .desktop-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+
+  .icon {
+    font-size: 64px;
+  }
+
+  .name {
+    font-size: 16px;
+  }
+
+  .widget {
+    min-width: 300px;
+  }
+
+  .time {
+    font-size: 32px;
+  }
+}
