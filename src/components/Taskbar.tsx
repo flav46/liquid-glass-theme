@@ -1,43 +1,67 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import "./Taskbar.css";
 
-const runningApps = [
-  { icon: "🌐", name: "Chrome", active: true },
-  { icon: "📝", name: "Notepad", active: false },
-  { icon: "🎵", name: "Music Player", active: false },
-];
+interface OpenWindow {
+  id: string;
+  appId: string;
+}
 
-const systemTray = [
-  { icon: "🔊", name: "Volume" },
-  { icon: "📶", name: "WiFi" },
-  { icon: "🔋", name: "Battery" },
-  { icon: "🕒", name: "12:34 PM" },
-];
+interface TaskbarProps {
+  openWindows: OpenWindow[];
+  activeWindow: string | null;
+  onWindowClick: (id: string) => void;
+  onDockClick: (appId: string) => void;
+  APPS: Array<{ id: string; name: string; icon: string }>;
+}
 
-function Taskbar() {
+const APP_ICONS: Record<string, string> = {
+  files: "📁",
+  notepad: "📝",
+  calculator: "🧮",
+  browser: "🌐",
+  paint: "🎨",
+  settings: "⚙️",
+};
+
+function Taskbar({ openWindows, activeWindow, onWindowClick, onDockClick, APPS }: TaskbarProps) {
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const formatTime = (date: Date) => date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+
+  const getIcon = (appId: string) => APP_ICONS[appId] || "📄";
+  const getName = (appId: string) => APPS.find(a => a.id === appId)?.name || appId;
+
   return (
     <div className="taskbar">
       <div className="taskbar-left">
-        <motion.div
-          className="start-button"
+        <motion.button
+          className="start-btn"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          onClick={() => onDockClick("toggle")}
         >
-          <div className="start-icon">🪟</div>
-          <span>Start</span>
-        </motion.div>
+          <span className="start-icon">🪟</span>
+          <span className="start-label">Start</span>
+        </motion.button>
 
         <div className="running-apps">
-          {runningApps.map((app, index) => (
-            <motion.div
-              key={index}
-              className={`taskbar-app ${app.active ? 'active' : ''}`}
+          {openWindows.map((win) => (
+            <motion.button
+              key={win.id}
+              className={`taskbar-app ${activeWindow === win.id ? "taskbar-app--active" : ""}`}
+              onClick={() => onWindowClick(win.id)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <div className="app-icon">{app.icon}</div>
-              {app.active && <div className="active-indicator"></div>}
-            </motion.div>
+              <span className="taskbar-app-icon">{getIcon(win.appId)}</span>
+              <span className="taskbar-app-name">{getName(win.appId)}</span>
+            </motion.button>
           ))}
         </div>
       </div>
@@ -45,30 +69,16 @@ function Taskbar() {
       <div className="taskbar-center">
         <div className="search-box">
           <span className="search-icon">🔍</span>
-          <input type="text" placeholder="Type here to search" />
+          <input type="text" placeholder="Search apps..." />
         </div>
       </div>
 
       <div className="taskbar-right">
         <div className="system-tray">
-          {systemTray.map((item, index) => (
-            <motion.div
-              key={index}
-              className="tray-item"
-              whileHover={{ scale: 1.1 }}
-            >
-              {item.icon}
-            </motion.div>
-          ))}
-        </div>
-        <div className="show-desktop">
-          <motion.div
-            className="desktop-button"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            □
-          </motion.div>
+          <div className="tray-item" title="Volume">🔊</div>
+          <div className="tray-item" title="WiFi">📶</div>
+          <div className="tray-item" title="Battery">🔋</div>
+          <div className="tray-item tray-time">{formatTime(currentTime)}</div>
         </div>
       </div>
     </div>

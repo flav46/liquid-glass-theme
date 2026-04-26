@@ -3,9 +3,13 @@ import Window from "./Window";
 
 interface BrowserProps {
   onClose: () => void;
+  initialPosition?: { x: number; y: number };
+  zIndex?: number;
+  onFocus?: () => void;
+  isActive?: boolean;
 }
 
-function Browser({ onClose }: BrowserProps) {
+function Browser({ onClose, initialPosition, zIndex, onFocus, isActive }: BrowserProps) {
   const [url, setUrl] = useState("https://www.google.com");
   const [currentUrl, setCurrentUrl] = useState("https://www.google.com");
   const [history, setHistory] = useState<string[]>(["https://www.google.com"]);
@@ -114,7 +118,16 @@ function Browser({ onClose }: BrowserProps) {
   };
 
   return (
-    <Window title="Web Browser" onClose={onClose} width={900} height={600}>
+    <Window
+      title="Browser"
+      onClose={onClose}
+      width={900}
+      height={600}
+      initialPosition={initialPosition}
+      zIndex={zIndex}
+      onFocus={onFocus}
+      isActive={isActive}
+    >
       <div className="browser">
         <div className="browser-toolbar">
           <div className="browser-controls">

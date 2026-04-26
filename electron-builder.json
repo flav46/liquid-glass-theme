@@ -1,0 +1,31 @@
+{
+  "appId": "com.liquidglass.os",
+  "productName": "Liquid Glass OS",
+  "directories": {
+    "output": "dist",
+    "buildResources": "build"
+  },
+  "files": [
+    "dist/**/*",
+    "electron/**/*"
+  ],
+  "linux": {
+    "target": [
+      {
+        "target": "AppImage",
+        "arch": ["x64"]
+      },
+      {
+        "target": "deb",
+        "arch": ["x64"]
+      },
+      {
+        "target": "tar.gz",
+        "arch": ["x64"]
+      },
+      "snap"
+    ],
+    "category": "Utility",
+    "maintainer": "Liquid Glass Team <dev@liquidglass.os>"
+  }
+}

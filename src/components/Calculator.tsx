@@ -3,9 +3,13 @@ import Window from "./Window";
 
 interface CalculatorProps {
   onClose: () => void;
+  initialPosition?: { x: number; y: number };
+  zIndex?: number;
+  onFocus?: () => void;
+  isActive?: boolean;
 }
 
-function Calculator({ onClose }: CalculatorProps) {
+function Calculator({ onClose, initialPosition, zIndex, onFocus, isActive }: CalculatorProps) {
   const [display, setDisplay] = useState("0");
   const [previousValue, setPreviousValue] = useState<number | null>(null);
   const [operation, setOperation] = useState<string | null>(null);
@@ -83,7 +87,16 @@ function Calculator({ onClose }: CalculatorProps) {
   };
 
   return (
-    <Window title="Calculator" onClose={onClose} width={300} height={400}>
+    <Window
+      title="Calculator"
+      onClose={onClose}
+      width={300}
+      height={400}
+      initialPosition={initialPosition}
+      zIndex={zIndex}
+      onFocus={onFocus}
+      isActive={isActive}
+    >
       <div className="calculator">
         <div className="calculator-display">{display}</div>
         <div className="calculator-keypad">

@@ -1,0 +1,312 @@
+.boot-screen-container {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  font-family: "SF Pro Display", "Segoe UI", system-ui, sans-serif;
+}
+
+.boot-wallpaper {
+  position: absolute;
+  inset: 0;
+}
+
+.boot-wallpaper-aurora {
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(138, 212, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 30%, rgba(255, 200, 180, 0.12) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 80%, rgba(138, 180, 255, 0.1) 0%, transparent 40%),
+    linear-gradient(180deg, #0a1628 0%, #12243e 50%, #0d1f38 100%);
+}
+
+.boot-wallpaper-ocean {
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(64, 180, 200, 0.2) 0%, transparent 45%),
+    radial-gradient(ellipse at 80% 60%, rgba(100, 220, 180, 0.15) 0%, transparent 40%),
+    linear-gradient(180deg, #1a4050 0%, #2a6070 50%, #1a4050 100%);
+}
+
+.boot-wallpaper-sunset {
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(255, 140, 100, 0.25) 0%, transparent 40%),
+    radial-gradient(ellipse at 70% 40%, rgba(255, 100, 80, 0.2) 0%, transparent 35%),
+    linear-gradient(180deg, #401808 0%, #602010 50%, #3a0808 100%);
+}
+
+.boot-wallpaper-forest {
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(100, 180, 100, 0.2) 0%, transparent 40%),
+    radial-gradient(ellipse at 70% 50%, rgba(60, 140, 80, 0.15) 0%, transparent 35%),
+    linear-gradient(180deg, #0a2008 0%, #103010 50%, #082008 100%);
+}
+
+.boot-wallpaper-rainbow {
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(255, 100, 150, 0.2) 0%, transparent 35%),
+    radial-gradient(ellipse at 50% 50%, rgba(150, 100, 255, 0.2) 0%, transparent 40%),
+    radial-gradient(ellipse at 80% 30%, rgba(100, 255, 180, 0.15) 0%, transparent 35%),
+    linear-gradient(180deg, #201020 0%, #301830 50%, #181020 100%);
+}
+
+.boot-wallpaper-space {
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(150, 100, 200, 0.25) 0%, transparent 40%),
+    radial-gradient(ellipse at 80% 70%, rgba(80, 80, 150, 0.2) 0%, transparent 35%),
+    linear-gradient(180deg, #080810 0%, #101025 50%, #050508 100%);
+}
+
+.boot-wallpaper-mint {
+  background:
+    radial-gradient(ellipse at 30% 25%, rgba(180, 255, 200, 0.2) 0%, transparent 40%),
+    radial-gradient(ellipse at 70% 55%, rgba(120, 220, 160, 0.15) 0%, transparent 35%),
+    linear-gradient(180deg, #102818 0%, #183828 50%, #102018 100%);
+}
+
+.boot-wallpaper-cotton-candy {
+  background:
+    radial-gradient(ellipse at 25% 30%, rgba(255, 150, 200, 0.25) 0%, transparent 38%),
+    radial-gradient(ellipse at 75% 35%, rgba(150, 200, 255, 0.2) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 75%, rgba(200, 150, 255, 0.18) 0%, transparent 35%),
+    linear-gradient(180deg, #201018 0%, #281828 50%, #181020 100%);
+}
+
+.boot-aurora {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.boot-aurora-1 {
+  width: 600px;
+  height: 600px;
+  left: -10%;
+  top: -20%;
+  background: radial-gradient(circle, rgba(138, 212, 255, 0.25), transparent 70%);
+}
+
+.boot-aurora-2 {
+  width: 500px;
+  height: 500px;
+  right: -15%;
+  bottom: -10%;
+  background: radial-gradient(circle, rgba(255, 180, 220, 0.2), transparent 70%);
+}
+
+.boot-noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+.boot-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(138, 212, 255, 0.8), transparent);
+}
+
+.boot-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  text-align: center;
+}
+
+.boot-logo-wrapper {
+  margin-bottom: 24px;
+}
+
+.boot-logo {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 28px;
+  display: grid;
+  place-items: center;
+  box-shadow:
+    0 0 60px rgba(138, 212, 255, 0.4),
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+}
+
+.boot-logo-inner {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(138, 212, 255, 0.6));
+}
+
+.boot-logo-text {
+  position: relative;
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #123555;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.boot-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 8px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.8) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.boot-subtitle {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0 28px;
+}
+
+.boot-progress {
+  width: min(400px, calc(100vw - 60px));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress-track {
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, 
+    rgba(138, 212, 255, 0.9) 0%, 
+    rgba(255, 255, 255, 0.95) 50%,
+    rgba(138, 212, 255, 0.9) 100%);
+  box-shadow: 0 0 20px rgba(138, 212, 255, 0.5);
+}
+
+.progress-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.boot-current-step {
+  margin-top: 16px;
+  font-size: 0.95rem;
+  color: rgba(138, 212, 255, 0.9);
+}
+
+.install-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 24px;
+  margin-top: 28px;
+  font-size: 0.8rem;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.35);
+  transition: color 0.3s ease;
+}
+
+.step-item.completed {
+  color: rgba(138, 212, 255, 0.7);
+}
+
+.step-item.current {
+  color: #8ad4ff;
+}
+
+.step-dot {
+  font-size: 0.7rem;
+}
+
+.step-text {
+  white-space: nowrap;
+}
+
+.boot-dots {
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.boot-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.boot-complete {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.boot-complete-logo {
+  margin-bottom: 8px;
+}
+
+.boot-complete h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+}
+
+.boot-complete p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@media (max-width: 600px) {
+  .install-steps-grid {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .boot-title {
+    font-size: 1.8rem;
+  }
+
+  .boot-logo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .boot-logo-text {
+    font-size: 1.6rem;
+  }
+}

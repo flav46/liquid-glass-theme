@@ -173,6 +173,18 @@ To add custom icons:
 - `npm run build-electron-mac` - Build for macOS
 - `npm run build-electron-win` - Build for Windows
 
+## Troubleshooting
+
+### Codex error: `"The 'gpt-5.4' model is not supported when using Codex with a ChatGPT account."`
+
+If you see this error in Codex, your environment is trying to use a model that is not available for your account type.
+
+1. Open your Codex model selector and choose a supported model (for example, `gpt-5` or any model shown as available to your account).
+2. If your project stores the model name in config or environment variables, replace `gpt-5.4` with a supported model.
+3. Restart the Codex session after updating config so the new model setting is picked up.
+
+If you still get the same message, verify there are no duplicate settings in local `.env*` files, shell profile exports, or editor/Codex workspace settings overriding your selection.
+
 ## License
 
 MIT License

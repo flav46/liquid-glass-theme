@@ -1,239 +1,1892 @@
-.desktop-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-  gap: 20px;
-  padding: 20px;
-  max-width: 1200px;
+.desktop {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
 }
 
-.desktop-container {
-  position: relative;
-  width: 100%;
+/* ===== UNIFIED LIQUID GLASS THEME FOR ALL APPS ===== */
+.os-window, .deepin-fm, .calendar-app, .weather-app, .music-app, .terminal-app, .system-monitor, .ubuntu-apps, .macos-apps, .settings-app, .paint-app, .notepad-app, .calculator-app, .browser-app {
+  background: rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(30px) saturate(1.3) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(1.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.15),
+    0 0 40px rgba(138, 212, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+}
+
+.os-window-header {
+  background: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25) !important;
+}
+
+.os-window-content {
+  background: rgba(255, 255, 255, 0.35) !important;
+}
+
+.deepin-toolbar, .macos-sidebar, .settings-sidebar, .calendar-header, .weather-app {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+}
+
+/* Glass buttons */
+.music-btn, .deepin-nav button, .deepin-view-toggle button, .calendar-nav, .music-btn-small, .ubuntu-cat, .macos-cat, .deepin-device, .deepin-place {
+  background: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  transition: all 0.2s ease !important;
+}
+
+.music-btn:hover, .deepin-nav button:hover, .calendar-nav:hover, .ubuntu-cat:hover, .macos-cat:hover, .deepin-device:hover, .deepin-place:hover {
+  background: rgba(255, 255, 255, 0.4) !important;
+  transform: translateY(-2px);
+}
+
+/* Glass inputs */
+.deepin-path, .deepin-search input, .ubuntu-search input, .browser-address-bar input, .notepad-editor, .calculator-display {
+  background: rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  color: #1a3050 !important;
+}
+
+/* Glass progress bars */
+.stat-bar, .music-progress, .music-volume input {
+  background: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.stat-bar-fill, .music-progress-fill {
+  background: linear-gradient(90deg, rgba(138, 212, 255, 0.8), rgba(255, 255, 255, 0.9)) !important;
+  box-shadow: 0 0 15px rgba(138, 212, 255, 0.5) !important;
+}
+
+/* Glass lists */
+.process-row:hover, .deepin-list-item:hover, .playlist-item:hover, .calendar-day:hover {
+  background: rgba(255, 255, 255, 0.35) !important;
+}
+
+/* Glass icons on dark backgrounds */
+.terminal-app {
+  background: rgba(10, 15, 25, 0.9) !important;
+}
+
+.terminal-line {
+  color: #b6ffd1 !important;
+}
+
+.terminal-input {
+  color: #b6ffd1 !important;
+}
+
+/* Weather gradient (keep for visibility) */
+.weather-app {
+  background: linear-gradient(180deg, rgba(102, 126, 234, 0.85), rgba(118, 75, 162, 0.85)) !important;
+  backdrop-filter: blur(30px) !important;
+  -webkit-backdrop-filter: blur(30px) !important;
+}
+
+/* Album art in music player */
+.album-cover {
+  background: linear-gradient(135deg, rgba(138, 212, 255, 0.4), rgba(255, 255, 255, 0.3)) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(138, 212, 255, 0.3) !important;
+}
+
+/* Sidebar glass */
+.deepin-sidebar, .settings-sidebar, .macos-sidebar {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Content areas */
+.deepin-content, .ubuntu-content, .settings-content, .macos-content {
+  background: rgba(255, 255, 255, 0.35) !important;
+}
+
+/* Status bar */
+.deepin-status, .processes-header {
+  background: rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+/* Calendar days */
+.calendar-day, .calendar-today, .calendar-selected {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+.calendar-today {
+  background: rgba(102, 126, 234, 0.15) !important;
+  border: 2px solid rgba(102, 126, 234, 0.5) !important;
+}
+
+.calendar-selected {
+  background: rgba(102, 126, 234, 0.3) !important;
+  color: #fff !important;
+}
+
+/* Kernel Details */
+.kernel-app {
+  padding: 20px;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.kernel-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.kernel-logo {
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  font-size: 36px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(138, 212, 255, 0.2));
+  border-radius: 16px;
+}
+
+.kernel-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a3050;
+}
+
+.kernel-info {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+.kernel-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(26, 48, 80, 0.1);
+}
+
+.kernel-row:last-child {
+  border-bottom: none;
+}
+
+.kernel-value {
+  font-weight: 600;
+  color: #1a3050;
+}
+
+.kernel-value.highlight {
+  color: #667eea;
+}
+
+.kernel-modules-header {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a3050;
+  margin-bottom: 10px;
+}
+
+.kernel-modules {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  overflow-y: auto;
+}
+
+.kernel-module {
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  font-size: 12px;
+  color: #1a3050;
+}
+
+/* Disk Usage */
+.disk-usage {
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.disk-total {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.disk-total-label {
+  display: block;
+  font-size: 12px;
+  color: rgba(26, 48, 80, 0.7);
+}
+
+.disk-total-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a3050;
+}
+
+.disk-chart {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.disk-ring {
+  width: 160px;
+  height: 160px;
+  transform: rotate(-90deg);
+}
+
+.disk-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.disk-item {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 10px;
+}
+
+.disk-item-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.disk-name {
+  font-weight: 600;
+  color: #1a3050;
+}
+
+.disk-percent {
+  color: #667eea;
+  font-weight: 600;
+}
+
+.disk-bar {
+  height: 8px;
+  background: rgba(26, 48, 80, 0.15);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.disk-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 4px;
+}
+
+.disk-item-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: rgba(26, 48, 80, 0.7);
+}
+
+/* Network Monitor */
+.network-app {
+  padding: 16px;
+  height: 100%;
+}
+
+.network-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.network-tabs button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #1a3050;
+  cursor: pointer;
+}
+
+.network-tabs button.active {
+  background: #667eea;
+  color: #fff;
+}
+
+.network-interfaces {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.network-card {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.network-card-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.network-name {
+  font-weight: 700;
+  color: #1a3050;
+}
+
+.network-status {
+  font-size: 20px;
+}
+
+.network-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.network-detail {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.network-speed {
+  display: flex;
+  gap: 16px;
+}
+
+.wifi-networks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wifi-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+}
+
+.wifi-icon {
+  font-size: 28px;
+}
+
+.wifi-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.wifi-name {
+  font-weight: 600;
+  color: #1a3050;
+}
+
+.wifi-type {
+  font-size: 12px;
+  color: rgba(26, 48, 80, 0.7);
+}
+
+.wifi-actions button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  background: #667eea;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Control Center */
+.control-center {
+  padding: 16px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cc-sliders {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cc-slider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+}
+
+.cc-slider-icon {
+  font-size: 20px;
+}
+
+.cc-slider input {
+  flex: 1;
+  accent-color: #667eea;
+}
+
+.cc-slider-value {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1a3050;
+  min-width: 40px;
+}
+
+.cc-toggles {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.cc-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+.cc-toggle.active {
+  background: rgba(102, 126, 234, 0.3);
+}
+
+.cc-toggle-icon {
+  font-size: 20px;
+}
+
+.cc-toggle-label {
+  font-size: 13px;
+  color: #1a3050;
+}
+
+.cc-quick-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.cc-action {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.25);
+  font-size: 12px;
+  color: #1a3050;
+  cursor: pointer;
+}
+
+/* Task Manager */
+.task-manager {
+  padding: 16px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.task-header {
+  display: grid;
+  grid-template-columns: 1fr 150px 60px;
+  gap: 12px;
+  padding: 10px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(26, 48, 80, 0.7);
+  border-bottom: 1px solid rgba(26, 48, 80, 0.1);
+}
+
+.task-item {
+  display: grid;
+  grid-template-columns: 1fr 150px 60px;
+  gap: 12px;
+  padding: 14px 12px;
+  align-items: center;
+  border-bottom: 1px solid rgba(26, 48, 80, 0.08);
+}
+
+.task-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #1a3050;
+}
+
+.task-status.running { color: #667eea; }
+.task-status.pending { color: #999; }
+
+.task-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.task-progress-bar {
+  flex: 1;
+  height: 8px;
+  background: rgba(26, 48, 80, 0.15);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.task-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 4px;
+}
+
+.task-cancel {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 100, 100, 0.2);
+  color: #f55;
+  cursor: pointer;
+}
+
+/* System Logs */
+.system-logs {
+  padding: 12px;
+  height: 100%;
+  overflow-y: auto;
+  font-family: "SF Mono", monospace;
+  font-size: 12px;
+}
+
+.log-entry {
+  display: flex;
+  gap: 12px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  margin-bottom: 4px;
+}
+
+.log-time { color: #667eea; min-width: 70px; }
+.log-type { min-width: 60px; text-transform: uppercase; font-size: 10px; }
+.log-msg { color: #1a3050; }
+
+.log-info .log-type { color: #667eea; }
+.log-success .log-type { color: #28c840; }
+.log-warning .log-type { color: #ffbd2e; }
+.log-error .log-type { color: #f55; }
+
+/* Package Manager */
+.package-manager {
+  padding: 16px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.pm-header {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.pm-header input {
+  flex: 1;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.25);
+  color: #1a3050;
+  font-size: 14px;
+}
+
+.pm-cats {
+  display: flex;
+  gap: 6px;
+}
+
+.pm-cats button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #1a3050;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.pm-cats button.active {
+  background: #667eea;
+  color: #fff;
+}
+
+.pm-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.pm-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 6px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.pm-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.pm-name {
+  font-weight: 600;
+  color: #1a3050;
+}
+
+.pm-version {
+  font-size: 12px;
+  color: rgba(26, 48, 80, 0.7);
+}
+
+.pm-size {
+  font-size: 12px;
+  color: rgba(26, 48, 80, 0.7);
+  min-width: 70px;
+  text-align: right;
+}
+
+.pm-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 16px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.pm-btn.install {
+  background: #667eea;
+  color: #fff;
+}
+
+.pm-btn.remove {
+  background: rgba(255, 100, 100, 0.3);
+  color: #f55;
+}
+
+/* ===== WALLPAPERS ===== */
+
+.desktop-walpaper-aurora {
+  background: linear-gradient(160deg, #e8eef8 0%, #c4d4ec 50%, #8a9cc6 100%);
+}
+
+.desktop-walpaper-ocean {
+  background: linear-gradient(160deg, #a8d8e6 0%, #6bb3c9 50%, #3d8fa8 100%);
+}
+
+.desktop-walpaper-sunset {
+  background: linear-gradient(165deg, #ffd4c4 0%, #f5a88a 50%, #d87858 100%);
+}
+
+.desktop-walpaper-forest {
+  background: linear-gradient(160deg, #c8e8d0 0%, #98c8a0 50%, #68a870 100%);
+}
+
+.desktop-walpaper-rainbow {
+  background: linear-gradient(155deg, #f8d8f8 0%, #d8b8e8 50%, #a878c8 100%);
+}
+
+.desktop-walpaper-space {
+  background: linear-gradient(160deg, #2a2a48 0%, #1a1a30 50%, #0a0a18 100%);
+}
+
+.desktop-walpaper-mint {
+  background: linear-gradient(160deg, #d0f8e8 0%, #90d8c0 50%, #50b898 100%);
+}
+
+.desktop-walpaper-cotton-candy {
+  background: linear-gradient(155deg, #ffe8f0 0%, #e8c8e8 50%, #d0a8d0 100%);
+}
+
+.desktop-icons {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 10;
+}
+
+.desktop-icon-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.desktop-icon-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.desktop-icon-emoji {
+  font-size: 40px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.desktop-icon-name {
+  font-size: 11px;
+  font-weight: 600;
+  color: #1a3050;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+  max-width: 80px;
+  word-break: break-word;
 }
 
 .desktop-widgets {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 16px;
+  right: 16px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 12px;
+  z-index: 10;
 }
 
 .widget {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border-radius: 12px;
-  padding: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  min-width: 200px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  padding: 14px 18px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 }
 
 .date-time-widget {
   text-align: center;
 }
 
-.time {
-  font-size: 24px;
-  font-weight: 600;
-  color: white;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  margin-bottom: 8px;
-}
-
-.date {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.8);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-}
-
 .weather-widget {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+}
+
+.date-time-widget .time {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a3050;
+}
+
+.date-time-widget .date {
+  font-size: 12px;
+  color: #2a4a70;
+  margin-top: 2px;
 }
 
 .weather-icon {
-  font-size: 32px;
+  font-size: 28px;
 }
 
-.weather-info {
-  flex: 1;
-}
-
-.temperature {
-  font-size: 20px;
+.weather-widget .temp {
+  font-size: 18px;
   font-weight: 600;
-  color: white;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  color: #1a3050;
 }
 
-.condition {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.8);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+.dock {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  z-index: 100;
 }
 
-.desktop-icon {
+.dock-item {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  font-size: 28px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.dock-item:hover {
+  transform: translateY(-8px) scale(1.1);
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.dock-item--active {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.dock-item--active::after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #1a4070;
+}
+
+.dock-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.taskbar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 90;
+}
+
+.taskbar-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #1a3050;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.taskbar-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.taskbar-btn--active {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.app-drawer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(700px, calc(100vw - 40px));
+  height: min(500px, calc(100vh - 120px));
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 24px;
+  padding: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  z-index: 200;
+  overflow: auto;
+}
+
+.app-drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.app-drawer-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a3050;
+}
+
+.app-drawer-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.3);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.app-drawer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 12px;
+}
+
+.app-drawer-item {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 8px;
+  padding: 16px 12px;
+  border-radius: 16px;
   cursor: pointer;
-  padding: 10px;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  position: relative;
+  transition: background 0.2s;
 }
 
-.desktop-icon:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+.app-drawer-item:hover {
+  background: rgba(255, 255, 255, 0.4);
 }
 
-.desktop-icon.folder:hover {
-  background: rgba(100, 150, 255, 0.2);
+.app-drawer-icon {
+  font-size: 36px;
 }
 
-.desktop-icon.app:hover {
-  background: rgba(255, 100, 150, 0.2);
-}
-
-.desktop-icon.bin:hover {
-  background: rgba(255, 150, 100, 0.2);
-}
-
-.icon {
-  font-size: 48px;
-  margin-bottom: 8px;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-}
-
-.name {
+.app-drawer-name {
   font-size: 12px;
-  color: white !important;
+  font-weight: 600;
+  color: #1a3050;
   text-align: center;
-  font-weight: 500;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-  max-width: 80px;
-  word-wrap: break-word;
 }
 
-.desktop-icon.selected {
-  background: rgba(0, 120, 255, 0.3);
-  border: 2px solid rgba(0, 120, 255, 0.8);
-}
-
-/* Responsive adjustments for desktop icons */
 @media (max-width: 768px) {
-  .desktop-grid {
-    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-    gap: 15px;
-    padding: 15px;
+  .desktop-icon-emoji {
+    font-size: 32px;
   }
 
-  .icon {
-    font-size: 36px;
-    margin-bottom: 6px;
-  }
-
-  .name {
+  .desktop-icon-name {
     font-size: 10px;
   }
 
-  .desktop-widgets {
-    top: 10px;
-    right: 10px;
-    gap: 10px;
+  .dock-item {
+    width: 44px;
+    height: 44px;
+    font-size: 22px;
   }
 
-  .widget {
-    min-width: 150px;
-    padding: 12px;
-  }
-
-  .time {
-    font-size: 18px;
-  }
-
-  .date {
-    font-size: 12px;
-  }
-
-  .weather-icon {
-    font-size: 24px;
-  }
-
-  .temperature {
-    font-size: 16px;
+  .taskbar {
+    height: 40px;
   }
 }
 
-@media (min-width: 1200px) {
-  .desktop-grid {
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 25px;
-    padding: 25px;
-  }
-
-  .icon {
-    font-size: 56px;
-    margin-bottom: 10px;
-  }
-
-  .name {
-    font-size: 14px;
-  }
-
-  .desktop-widgets {
-    top: 30px;
-    right: 30px;
-    gap: 25px;
-  }
-
-  .widget {
-    min-width: 250px;
-    padding: 20px;
-  }
-
-  .time {
-    font-size: 28px;
-  }
-
-  .date {
-    font-size: 16px;
-  }
-
-  .weather-icon {
-    font-size: 36px;
-  }
-
-  .temperature {
-    font-size: 24px;
-  }
+/* Music Player */
+.music-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  height: 100%;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
 }
 
-@media (min-width: 1600px) {
-  .desktop-grid {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  }
+.music-artwork {
+  margin-bottom: 20px;
+}
 
-  .icon {
-    font-size: 64px;
-  }
+.album-cover {
+  width: 180px;
+  height: 180px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: grid;
+  place-items: center;
+  font-size: 64px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
 
-  .name {
-    font-size: 16px;
-  }
+.music-info {
+  text-align: center;
+  margin-bottom: 16px;
+}
 
-  .widget {
-    min-width: 300px;
-  }
+.music-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
 
-  .time {
-    font-size: 32px;
-  }
+.music-artist {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.music-progress-container {
+  width: 100%;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+.music-progress {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.music-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 3px;
+  transition: width 0.1s;
+}
+
+.music-time {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 4px;
+}
+
+.music-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.music-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.music-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.music-btn-large {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.music-btn-small {
+  width: 36px;
+  height: 36px;
+  font-size: 14px;
+}
+
+.music-btn.active {
+  background: rgba(102, 126, 234, 0.5);
+}
+
+.music-volume {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 16px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.music-volume input {
+  flex: 1;
+  accent-color: #667eea;
+}
+
+.music-playlist {
+  flex: 1;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.playlist-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.playlist-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.playlist-item.active {
+  background: rgba(102, 126, 234, 0.3);
+}
+
+.playlist-num {
+  width: 24px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+}
+
+.playlist-title {
+  flex: 1;
+  color: #fff;
+  font-size: 14px;
+}
+
+.playlist-duration {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+}
+
+/* Terminal */
+.terminal-app {
+  height: 100%;
+  background: #0a0a0f;
+  font-family: "SF Mono", "Menlo", monospace;
+  font-size: 14px;
+  padding: 12px;
+  overflow: hidden;
+  cursor: text;
+}
+
+.terminal-output {
+  overflow-y: auto;
+  height: calc(100% - 40px);
+}
+
+.terminal-line {
+  color: #b6ffd1;
+  white-space: pre-wrap;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.terminal-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #b6ffd1;
+  font-family: inherit;
+  font-size: inherit;
+  flex: 1;
+}
+
+.terminal-prompt {
+  color: #667eea;
+  margin-right: 8px;
+}
+
+.terminal-input-line {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+/* Calendar */
+.calendar-app {
+  padding: 16px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.calendar-nav {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: #1a3050;
+  cursor: pointer;
+}
+
+.calendar-month-year {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a3050;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.calendar-weekday {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(26, 48, 80, 0.6);
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 14px;
+  color: #1a3050;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.calendar-day-empty {
+  cursor: default;
+}
+
+.calendar-day:hover:not(.calendar-day-empty) {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.calendar-today {
+  background: rgba(102, 126, 234, 0.2);
+  font-weight: 700;
+}
+
+.calendar-selected {
+  background: #667eea !important;
+  color: #fff;
+}
+
+.calendar-event-dot {
+  position: absolute;
+  bottom: 4px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ff6b6b;
+}
+
+.calendar-events {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(26, 48, 80, 0.1);
+}
+
+.calendar-events h3 {
+  font-size: 14px;
+  color: #1a3050;
+  margin: 0 0 8px;
+}
+
+.calendar-event-item {
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  margin-bottom: 4px;
+}
+
+.calendar-event-date {
+  font-size: 12px;
+  color: rgba(26, 48, 80, 0.7);
+}
+
+.calendar-event-title {
+  font-size: 13px;
+  color: #1a3050;
+  font-weight: 500;
+}
+
+/* System Monitor */
+.system-monitor {
+  padding: 16px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.system-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: rgba(26, 48, 80, 0.7);
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a3050;
+}
+
+.stat-bar {
+  height: 6px;
+  background: rgba(26, 48, 80, 0.15);
+  border-radius: 3px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.stat-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 3px;
+}
+
+.processes-header {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a3050;
+  margin-bottom: 8px;
+}
+
+.processes-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.process-header {
+  display: grid;
+  grid-template-columns: 60px 1fr 60px 80px;
+  gap: 8px;
+  padding: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(26, 48, 80, 0.7);
+  border-bottom: 1px solid rgba(26, 48, 80, 0.1);
+}
+
+.process-row {
+  display: grid;
+  grid-template-columns: 60px 1fr 60px 80px;
+  gap: 8px;
+  padding: 8px;
+  font-size: 13px;
+  color: #1a3050;
+  border-radius: 6px;
+}
+
+.process-row:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Ubuntu Apps */
+.ubuntu-apps {
+  padding: 16px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.ubuntu-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 24px;
+  margin-bottom: 16px;
+}
+
+.ubuntu-search input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 14px;
+  color: #1a3050;
+}
+
+.ubuntu-categories {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.ubuntu-cat {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.3);
+  color: #1a3050;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.ubuntu-cat.active {
+  background: #e95420;
+  color: #fff;
+}
+
+.ubuntu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+  overflow-y: auto;
+}
+
+.ubuntu-app-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 16px 12px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.ubuntu-app-item:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.ubuntu-app-icon {
+  font-size: 32px;
+}
+
+.ubuntu-app-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a3050;
+}
+
+.ubuntu-app-desc {
+  font-size: 11px;
+  color: rgba(26, 48, 80, 0.7);
+}
+
+/* Weather App */
+.weather-app {
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+}
+
+.weather-current {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.weather-icon {
+  font-size: 64px;
+}
+
+.weather-temp {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.weather-condition {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.weather-location {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.weather-details {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.weather-detail {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.weather-forecast {
+  flex: 1;
+  display: flex;
+  gap: 8px;
+}
+
+.forecast-day {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 8px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+}
+
+.forecast-day-name {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.forecast-icon {
+  font-size: 24px;
+}
+
+.forecast-temps {
+  font-size: 12px;
+}
+
+/* Deepin File Manager */
+.deepin-fm {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+}
+
+.deepin-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(26, 48, 80, 0.1);
+}
+
+.deepin-nav {
+  display: flex;
+  gap: 4px;
+}
+
+.deepin-nav button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+.deepin-path {
+  flex: 1;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  font-size: 13px;
+  color: #1a3050;
+}
+
+.deepin-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+}
+
+.deepin-search input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 120px;
+  font-size: 13px;
+}
+
+.deepin-sidebar {
+  width: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(26, 48, 80, 0.1);
+  padding: 12px;
+}
+
+.deepin-sidebar-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(26, 48, 80, 0.6);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.deepin-device, .deepin-place {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #1a3050;
+}
+
+.deepin-device:hover, .deepin-place:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.deepin-content {
+  flex: 1;
+  padding: 16px;
+  overflow: auto;
+}
+
+.deepin-view-toggle {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.deepin-view-toggle button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+.deepin-view-toggle button.active {
+  background: #0078d4;
+  color: #fff;
+}
+
+.deepin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 16px;
+}
+
+.deepin-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.deepin-item:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.deepin-item.selected {
+  background: rgba(0, 120, 212, 0.2);
+}
+
+.deepin-item-icon {
+  font-size: 40px;
+}
+
+.deepin-item-name {
+  font-size: 12px;
+  color: #1a3050;
+  text-align: center;
+}
+
+.deepin-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.deepin-list-header {
+  display: grid;
+  grid-template-columns: 1fr 80px 100px;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(26, 48, 80, 0.7);
+  border-bottom: 1px solid rgba(26, 48, 80, 0.1);
+}
+
+.deepin-list-item {
+  display: grid;
+  grid-template-columns: 1fr 80px 100px;
+  padding: 10px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.deepin-list-item:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.deepin-list-item.selected {
+  background: rgba(0, 120,212, 0.2);
+}
+
+.deepin-status {
+  padding: 8px 12px;
+  font-size: 12px;
+  color: rgba(26, 48, 80, 0.7);
+  background: rgba(255, 255, 255, 0.15);
+  border-top: 1px solid rgba(26, 48, 80, 0.1);
+}
+
+/* macOS Apps */
+.macos-apps {
+  display: flex;
+  height: 100%;
+}
+
+.macos-sidebar {
+  width: 180px;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.macos-cat {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 20px;
+  background: transparent;
+  text-align: left;
+  font-size: 14px;
+  color: #1a3050;
+  cursor: pointer;
+}
+
+.macos-cat.active {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.macos-content {
+  flex: 1;
+  padding: 20px;
+  overflow: auto;
+}
+
+.macos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 16px;
+}
+
+.macos-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 12px;
+  border: none;
+  border-radius: 16px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.macos-app:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.macos-app-icon {
+  font-size: 48px;
+}
+
+.macos-app-name {
+  font-size: 12px;
+  color: #1a3050;
+}
+
+/* Deepin-style cursor */
+.deepin-cursor, .macos-cursor {
+  cursor: default;
+}
+
+/* Context Menu */
+.context-menu {
+  position: fixed;
+  min-width: 180px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 6px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+}
+
+.context-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  font-size: 14px;
+  color: #1a3050;
+  cursor: pointer;
+  transition: background 0.15s;
+  text-align: left;
+}
+
+.context-menu-item:hover:not(.disabled) {
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.context-menu-item.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.context-menu-icon {
+  font-size: 14px;
+}
+
+.context-menu-divider {
+  height: 1px;
+  background: rgba(26, 48, 80, 0.1);
+  margin: 6px 0;
 }

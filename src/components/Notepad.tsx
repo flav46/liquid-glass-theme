@@ -3,14 +3,27 @@ import Window from "./Window";
 
 interface NotepadProps {
   onClose: () => void;
+  initialPosition?: { x: number; y: number };
+  zIndex?: number;
+  onFocus?: () => void;
+  isActive?: boolean;
 }
 
-function Notepad({ onClose }: NotepadProps) {
+function Notepad({ onClose, initialPosition, zIndex, onFocus, isActive }: NotepadProps) {
   const [content, setContent] = useState("Welcome to Notepad!\n\nStart typing your notes here...");
   const [fontSize, setFontSize] = useState(14);
 
   return (
-    <Window title="Notepad" onClose={onClose} width={700} height={500}>
+    <Window
+      title="Notes"
+      onClose={onClose}
+      width={700}
+      height={500}
+      initialPosition={initialPosition}
+      zIndex={zIndex}
+      onFocus={onFocus}
+      isActive={isActive}
+    >
       <div className="notepad-toolbar">
         <div className="font-controls">
           <label>Font Size:</label>

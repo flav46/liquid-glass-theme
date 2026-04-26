@@ -3,9 +3,13 @@ import Window from "./Window";
 
 interface PaintProps {
   onClose: () => void;
+  initialPosition?: { x: number; y: number };
+  zIndex?: number;
+  onFocus?: () => void;
+  isActive?: boolean;
 }
 
-function Paint({ onClose }: PaintProps) {
+function Paint({ onClose, initialPosition, zIndex, onFocus, isActive }: PaintProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [color, setColor] = useState("#000000");
@@ -75,7 +79,16 @@ function Paint({ onClose }: PaintProps) {
   };
 
   return (
-    <Window title="Paint" onClose={onClose} width={800} height={600}>
+    <Window
+      title="Drawing Board"
+      onClose={onClose}
+      width={800}
+      height={600}
+      initialPosition={initialPosition}
+      zIndex={zIndex}
+      onFocus={onFocus}
+      isActive={isActive}
+    >
       <div className="paint-app">
         <div className="paint-toolbar">
           <div className="tool-group">
